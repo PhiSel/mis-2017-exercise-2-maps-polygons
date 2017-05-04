@@ -35,6 +35,8 @@ import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private static final int FINE_LOCATION_PERMISSION = 1;
+    private static final int COARSE_LOCATION_PERMISSION = 2;
     private GoogleMap mMap;
     private ToggleButton toggleButton;
     private Button button;
@@ -202,6 +204,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_LOCATION_PERMISSION);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, COARSE_LOCATION_PERMISSION);
             return;
         }
         mMap.setMyLocationEnabled(true);
